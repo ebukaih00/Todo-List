@@ -4,19 +4,19 @@ const tasks = []
 let listEl = document.querySelector(".list-container")
 
 
-
-
 function addTask() {
 
-    let taskEl = document.getElementById("task-el").value
-
+    let input = document.getElementById("task-el")
+    let taskEl = input.value
 
     tasks.push({
         text: taskEl
     })
-
+    
+    
     listEl.innerHTML = ""
-
+    
+   
     for (let i = 0; i < tasks.length; i++) {
         listEl.innerHTML += `
     
@@ -25,11 +25,12 @@ function addTask() {
     <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
     </div>
     `
-
-  
+    
     }
+   
 
 }
+
 
 
 function deleteTask(index){
