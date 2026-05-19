@@ -62,7 +62,7 @@ function renderTask() {
 <p class="${completedClass}"> ${tasks[i].text}</p>
     </div>
     
-    <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
+    <button id = "delete-btn"   onclick = "deleteTask(${i})"> <i class="fa-solid fa-trash"></i></button>
     </div>
     `
     }
