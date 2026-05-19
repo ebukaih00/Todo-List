@@ -1,62 +1,83 @@
-*{
+* {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
 }
 
 
 body {
     display: flex;
+  
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    
 }
 
-.main-container{
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: start;
     border-radius: 8px;
     gap: 12px;
-    width: 400px;
-    height: 100%;
-
+    width: 500px;
+    padding: 2px;
 }
 
-.actions{
-    display: flex;
+.actions {
+   display: flex;
+    align-items: end;
+    justify-content: space-between;
     flex-direction: row;
+    padding: 12px 0px 16px 0px;
     width: 100%;
     gap: 16px;
+
+    
 }
-#task-el{
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 8px ;
+    height: 40px;
+    gap: 4px;
+   
+}
+
+#task-el {
+    flex: 1;
+    padding: 16px;
     border: 1px solid lightgrey;
     border-radius: 8px;
+       height: 40px;
 }
 
-#add-item{
-background-color: rgba(2, 86, 137, 0.925);
-padding: 8px 16px 8px 16px;
-border-radius: 8px;
-border: 0px solid;
-color: white;
+#add-item {
+    background-color: rgba(2, 86, 137, 0.925);
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    border: 0px solid;
+    color: white;
+      height: 40px;
+    
 }
 
 
 
-.list-item{
+.list-item {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgrey;
     width: 400px;
     justify-content: space-between;
     padding: 8px;
-    
+  
+
 }
 
 
 
-#delete-btn{
+#delete-btn {
 
     background-color: white;
     border: 1px solid red;
@@ -64,6 +85,8 @@ color: white;
     padding: 8px 16px 8px 16px;
 }
 
-#error-el{
+#error-el {
+    font-size: 14px;
+    margin-top: 0px;
     color: red;
 }

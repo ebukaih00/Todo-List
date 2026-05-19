@@ -13,7 +13,7 @@ function addTask() {
 
 
     if (input.value.trim() === "") {
-        errorEl.innerText = "Please enter a task! "
+        errorEl.innerText = "Please enter a task "
     }
 
     else {
@@ -35,7 +35,7 @@ function addTask() {
 
 function deleteTask(index) {
     tasks.splice(index, 1)
-    listEl.innerHTML = ""
+    
     localStorage.setItem("task", JSON.stringify(tasks))
 
     renderTask()
@@ -44,6 +44,7 @@ function deleteTask(index) {
 
 
 function renderTask() {
+    listEl.innerHTML = ""
     for (let i = 0; i < tasks.length; i++) {
         listEl.innerHTML += `
     
@@ -52,7 +53,6 @@ function renderTask() {
     <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
     </div>
     `
-
     }
 }
 renderTask()
