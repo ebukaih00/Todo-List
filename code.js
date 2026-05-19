@@ -1,10 +1,10 @@
-const tasks = []
+let tasks = []
 
 
 let listEl = document.querySelector(".list-container")
 
 
-
+tasks =  JSON.parse(localStorage.getItem("task")) || []
 
 function addTask() {
 
@@ -12,7 +12,7 @@ function addTask() {
     let taskEl = input.value
     let errorEl = document.getElementById("error-el")
 
-    
+
 
     if (input.value.trim() === "") {
         errorEl.innerText = "Please enter a task! "
@@ -22,15 +22,11 @@ function addTask() {
         errorEl.innerText = ""
         listEl.innerHTML = ""
         input.value = ""
-localStorage.setItem("task", JSON.stringify(tasks))
+       
         tasks.push({
             text: taskEl
         })
-
-
-
-
-
+         localStorage.setItem("task", JSON.stringify(tasks))
 
         for (let i = 0; i < tasks.length; i++) {
             listEl.innerHTML += `
@@ -42,6 +38,7 @@ localStorage.setItem("task", JSON.stringify(tasks))
     `
 
         }
+        
     }
 
 }
@@ -51,7 +48,7 @@ localStorage.setItem("task", JSON.stringify(tasks))
 function deleteTask(index) {
     tasks.splice(index, 1)
     listEl.innerHTML = ""
-    localStorage.getItem(tasks)
+   
 
     for (let i = 0; i < tasks.length; i++) {
         listEl.innerHTML += `
