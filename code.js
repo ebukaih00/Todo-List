@@ -2,6 +2,9 @@ let tasks = []
 
 let listEl = document.querySelector(".list-container")
 
+
+
+
 tasks = JSON.parse(localStorage.getItem("task")) || []
 
 function addTask() {
@@ -13,7 +16,7 @@ function addTask() {
 
 
     if (input.value.trim() === "") {
-        errorEl.innerText = "Please enter a task "
+        errorEl.innerText = "Enter a task in the input field to add "
     }
 
     else {
@@ -22,7 +25,8 @@ function addTask() {
         input.value = ""
 
         tasks.push({
-            text: taskEl
+            text: taskEl,
+            isCompleted: false
         })
         localStorage.setItem("task", JSON.stringify(tasks))
 
@@ -35,7 +39,7 @@ function addTask() {
 
 function deleteTask(index) {
     tasks.splice(index, 1)
-    
+
     localStorage.setItem("task", JSON.stringify(tasks))
 
     renderTask()
@@ -45,14 +49,30 @@ function deleteTask(index) {
 
 function renderTask() {
     listEl.innerHTML = ""
+
+    
     for (let i = 0; i < tasks.length; i++) {
+        let checkedAttribute = tasks[i].isCompleted ? "checked" : ""
+    let completedClass = tasks[i].isCompleted ? "strike-through" : ""
         listEl.innerHTML += `
     
     <div class ="list-item">
-    <p> ${tasks[i].text}</p>
+    <div class = "leading-items">
+    <input type="checkbox" ${checkedAttribute} onclick="toggleComplete(${i})">
+<p class="${completedClass}"> ${tasks[i].text}</p>
+    </div>
+    
     <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
     </div>
     `
     }
 }
+
+function toggleComplete(index) {
+    tasks[index].isCompleted = !tasks[index].isCompleted // Flips true to false, or false to true
+    localStorage.setItem("task", JSON.stringify(tasks))
+    renderTask()
+}
+
+
 renderTask()
