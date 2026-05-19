@@ -1,10 +1,8 @@
 let tasks = []
 
-
 let listEl = document.querySelector(".list-container")
 
-
-tasks =  JSON.parse(localStorage.getItem("task")) || []
+tasks = JSON.parse(localStorage.getItem("task")) || []
 
 function addTask() {
 
@@ -20,36 +18,32 @@ function addTask() {
 
     else {
         errorEl.innerText = ""
-        listEl.innerHTML = ""
+
         input.value = ""
-       
+
         tasks.push({
             text: taskEl
         })
-         localStorage.setItem("task", JSON.stringify(tasks))
+        localStorage.setItem("task", JSON.stringify(tasks))
 
-        for (let i = 0; i < tasks.length; i++) {
-            listEl.innerHTML += `
-    
-    <div class ="list-item">
-    <p> ${tasks[i].text}</p>
-    <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
-    </div>
-    `
+        renderTask()
 
-        }
-        
     }
 
 }
 
 
-
 function deleteTask(index) {
     tasks.splice(index, 1)
     listEl.innerHTML = ""
-   
+    localStorage.setItem("task", JSON.stringify(tasks))
 
+    renderTask()
+
+}
+
+
+function renderTask() {
     for (let i = 0; i < tasks.length; i++) {
         listEl.innerHTML += `
     
@@ -58,5 +52,7 @@ function deleteTask(index) {
     <button id = "delete-btn" onclick = "deleteTask(${i})">Delete</button>
     </div>
     `
+
     }
 }
+renderTask()
