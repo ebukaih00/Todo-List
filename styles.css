@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: beige;
 
 }
 
@@ -70,6 +71,8 @@ h1 {
 
 
 .list-item {
+    font-weight: bold;
+    color: darkgoldenrod;
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid lightgrey;
