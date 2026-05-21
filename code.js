@@ -1,9 +1,7 @@
 let tasks = []
 
 let listEl = document.querySelector(".list-container")
-
-
-
+ let errorEl = document.getElementById("error-el")
 
 tasks = JSON.parse(localStorage.getItem("task")) || []
 
@@ -11,8 +9,7 @@ function addTask() {
 
     let input = document.getElementById("task-el")
     let taskEl = input.value
-    let errorEl = document.getElementById("error-el")
-
+   
 
 
     if (input.value.trim() === "") {
@@ -21,9 +18,7 @@ function addTask() {
 
     else {
         errorEl.innerText = ""
-
         input.value = ""
-
         tasks.push({
             text: taskEl,
             isCompleted: false
@@ -36,7 +31,6 @@ function addTask() {
 
 }
 
-
 function deleteTask(index) {
     tasks.splice(index, 1)
 
@@ -46,11 +40,9 @@ function deleteTask(index) {
 
 }
 
-
 function renderTask() {
     listEl.innerHTML = ""
 
-    
     for (let i = 0; i < tasks.length; i++) {
         let checkedAttribute = tasks[i].isCompleted ? "checked" : ""
     let completedClass = tasks[i].isCompleted ? "strike-through" : ""
@@ -69,10 +61,8 @@ function renderTask() {
 }
 
 function toggleComplete(index) {
-    tasks[index].isCompleted = !tasks[index].isCompleted // Flips true to false, or false to true
+    tasks[index].isCompleted = !tasks[index].isCompleted 
     localStorage.setItem("task", JSON.stringify(tasks))
     renderTask()
 }
-
-
 renderTask()
